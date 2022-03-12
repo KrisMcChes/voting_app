@@ -1,11 +1,7 @@
 from flask import Flask, render_template
+app = Flask(__name__,
+            template_folder="templates")
 
-app = Flask(__name__)
-@app.route('/')
+@app.route("/")
 def home():
-	   return render_template('home.html')
-if __name__ == '__main__':
-   app.run()
-
-  # def index():
-   # return "<h1>Testing... Testing.. 1..2...3...!</h1>"
+    return render_template("home.html")
