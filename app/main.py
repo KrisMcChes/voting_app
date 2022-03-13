@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, request
-app = Flask(__name__, template_folder="iCloud Drive/Desktop/voting_app/app/templates")
+app = Flask(__name__, template_folder="templates")
 
 @app.route('/')
 def homepage():
