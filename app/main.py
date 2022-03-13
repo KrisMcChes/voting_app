@@ -17,7 +17,7 @@ def homepage():
 
 @app.route('/welcome')
 def welcome():
-    return render_template('welcome.html')  # render a template
+    return render_template('login.html')  # render a template
 
 
 # # Route for handling the login page logic
