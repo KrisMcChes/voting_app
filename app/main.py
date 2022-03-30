@@ -15,21 +15,21 @@ def homepage():
 </body>
 """
 
-@app.route('/welcome')
+@app.route('/welcome', methods=['GET', 'POST'])
 def welcome():
-    return render_template('login.html')  # render a template
+    return render_template('welcome.html')  # render a template
 
 
-# # Route for handling the login page logic
-# @app.route('/login', methods=['GET', 'POST'])
-# def login():
-#     error = None
-#     if request.method == 'POST':
-#         if request.form['username'] != 'admin' or request.form['password'] != 'admin':
-#             error = 'Invalid Credentials. Please try again.'
-#         else:
-#             return redirect(url_for('home'))
-#     return render_template('iCloud Drive/Desktop/voting_app/app/templates/login.html', error=error)
+# Route for handling the login page logic
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    error = None
+    if request.method == 'POST':
+        if request.form['username'] != 'admin' or request.form['password'] != 'admin':
+            error = 'Invalid Login. Try again or ask an Admin for help.'
+        else:
+            return redirect(url_for('welcome'))
+    return render_template('login.html', error=error)
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)
