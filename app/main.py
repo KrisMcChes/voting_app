@@ -1,14 +1,18 @@
 from flask import Flask, render_template, redirect, url_for, request
+# from flask_sqlalchemy import SQLAlchemy
 from models import db
+# from flask_login import LoginManager
+
+
 voteapp = Flask(__name__, template_folder="templates")
 
 
-# load config from the config file we created earlier 
-voteapp.config.from_object('config')
+# # load config from the config file we created earlier 
+# voteapp.config.from_object('config')
 
-# initialize and create the database 
-db.init_app(voteapp)
-db.create_all(app=voteapp)
+# # initialize and create the database 
+# db.init_app(voteapp)
+# db.create_all(app=voteapp)
 
 @voteapp.route('/', methods=['GET', 'POST'])
 def homepage():
@@ -25,8 +29,8 @@ def welcome():
         else:
             pass # unknown
        elif request.method == 'GET':
-        return render_template('welcome.html', form=form)
-       return render_template('welcome.html')  # render a template
+        # return render_template('welcome.html', form=form)
+         return render_template('welcome.html')  # render a template
 
 
 # Route for handling the login page logic
