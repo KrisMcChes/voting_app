@@ -13,12 +13,13 @@ class Base(db.Model):
     date_modified = db.Column(db.DateTime, default=db.func.current_timestamp(),
         onupdate=db.func.current_timestamp())
 
-# Model for poll topics class Topics(Base):
+# Model for poll topics 
+class Topics(Base):
     title = db.Column(db.String(500))
 
 # user friendly way to display the object     
-    def __repr__(self):
-         return self.title
+def __repr__(self):
+    return self.title
 
 # Model for poll options 
 class Options(Base):
@@ -35,7 +36,7 @@ class Polls(Base):
     # Relationship declaration (makes it easier for us to access the polls model     
     # from the other models it's related to)     
     topic = db.relationship('Topics', foreign_keys=[topic_id],
-            backref=db.backref('options', lazy='dynamic'))
+    backref=db.backref('options', lazy='dynamic'))
     option = db.relationship('Options',foreign_keys=[option_id])
 
 def __repr__(self):
