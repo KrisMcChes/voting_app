@@ -1,4 +1,3 @@
-alabaster @ file:///home/ktietz/src/ci/alabaster_1611921544520/work
 alembic==1.7.7
 amqp==5.1.0
 anaconda-client @ file:///opt/concourse/worker/volumes/live/1ce006cc-6454-4d7d-4ed8-8b41941b64eb/volume/anaconda-client_1624480173054/work
