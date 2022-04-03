@@ -57,9 +57,9 @@ def homepage():
 def welcome():
          return render_template('welcome.html')  # render a template
 
-# @voteapp.route('/makevote', methods=['GET', 'POST'])
-# def makevote():
-#          return render_template('makevote.html')  # render a template
+@voteapp.route('/welcome', methods=['GET', 'POST'])
+def makevote():
+         return render_template('makevote.html')  # render a template
 
 # Route for handling the login page logic
 @voteapp.route('/login', methods=['GET', 'POST'])
