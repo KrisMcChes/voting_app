@@ -11,12 +11,12 @@ from flask_sqlalchemy import SQLAlchemy
 # import sqlite3
 # import click
 
-voteapp = Flask(__name__, template_folder="templates")
+app = Flask(__name__, template_folder="templates")
 
-voteapp.config["SECRET_KEY"] = 'admin'
-voteapp.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///registration.db'
+app.config["SECRET_KEY"] = 'admin'
+app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///registration.db'
 
-db = SQLAlchemy(voteapp)
+db = SQLAlchemy(app)
 
 class UserDetails(db.Model):
     # table column id
@@ -66,30 +66,30 @@ class User(db.Model):
 #     app.cli.add_command(init_db_command)
 
 # Flask-WTF requires an encryption key - the string can be anything
-# voteapp.config['SECRET_KEY'] = 'admin'
+# app.config['SECRET_KEY'] = 'admin'
 # Bootstrap(app)
 
 
-@voteapp.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def homepage():
    return render_template('homepage.html')  # render a template
 
 
-@voteapp.route('/welcome', methods=['GET', 'POST'])
+@app.route('/welcome', methods=['GET', 'POST'])
 def welcome():
          return render_template('welcome.html')  # render a template
 
-@voteapp.route('/makevote', methods=['GET', 'POST'])
+@app.route('/makevote', methods=['GET', 'POST'])
 def makevote():
          return render_template('makevote.html')  # render a template
 
-@voteapp.route('/register', methods=['GET', 'POST'])
+@app.route('/register', methods=['GET', 'POST'])
 def register():
          return render_template('register.html')  # render a template
 
 
 # Route for handling the login page logic
-@voteapp.route('/login', methods=['GET', 'POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     error = None
     if request.method == 'POST':
@@ -100,4 +100,4 @@ def login():
     return render_template('login.html', error=error)
 
 if __name__ == '__main__':
-    voteapp.run(debug=True, use_reloader=True)
+    app.run(debug=True, use_reloader=True)
