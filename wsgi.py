@@ -1,4 +1,4 @@
-from app.main import voteapp
+from voteapp.main import voteapp
 
 if __name__ == "__main__":
     voteapp.run()
