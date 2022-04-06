@@ -1,4 +1,8 @@
 from flask import Flask, render_template, redirect, url_for, request
+from flask_sqlalchemy import SQLAlchemy
+# from app import views
+# from app import models
+
 # from flask_bootstrap import Bootstrap
 # from flask_wtf import FlaskForm
 # from wtforms import StringField, SubmitField
@@ -8,6 +12,24 @@ from flask import Flask, render_template, redirect, url_for, request
 # import click
 
 voteapp = Flask(__name__, template_folder="templates")
+
+voteapp.config["SECRET_KEY"] = 'admin'
+voteapp.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///registration.db'
+
+db = SQLAlchemy(voteapp)
+
+class UserDetails(db.Model):
+    # table column id
+    user_id = db.Column(db.Integer, primary_key = True)
+    
+    # table column name with data type of String
+    user_name = db.Column(db.String, nullable = False) 
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key =True)
+    username = db.Column(db.String(100), nullable = False)
+    user_email = db.Column(db.String(100), nullable= False)
+    user_password = db.Column(db.String(150), nullable = False)
 
 # #db stuff
 # def get_db():
@@ -57,9 +79,14 @@ def homepage():
 def welcome():
          return render_template('welcome.html')  # render a template
 
-@voteapp.route('/welcome', methods=['GET', 'POST'])
+@voteapp.route('/makevote', methods=['GET', 'POST'])
 def makevote():
          return render_template('makevote.html')  # render a template
+
+@voteapp.route('/register', methods=['GET', 'POST'])
+def register():
+         return render_template('register.html')  # render a template
+
 
 # Route for handling the login page logic
 @voteapp.route('/login', methods=['GET', 'POST'])
