@@ -1,5 +1,7 @@
 from flask import Flask, render_template, redirect, url_for, request
 from flask_sqlalchemy import SQLAlchemy
+
+
 # from app import views
 # from app import models
 
@@ -11,12 +13,19 @@ from flask_sqlalchemy import SQLAlchemy
 # import sqlite3
 # import click
 
+
+
 app = Flask(__name__, template_folder="templates")
 
 app.config["SECRET_KEY"] = 'admin'
 app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///registration.db'
 
 db = SQLAlchemy(app)
+
+def init_db():
+    db.init_app(app)
+    db.app = app
+    db.create_all()
 
 class UserDetails(db.Model):
     # table column id
