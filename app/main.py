@@ -1,7 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, request
 from flask_sqlalchemy import SQLAlchemy
 
-
 # from app import views
 # from app import models
 
@@ -12,8 +11,6 @@ from flask_sqlalchemy import SQLAlchemy
 # from flask.cli import with_appcontext
 # import sqlite3
 # import click
-
-
 
 app = Flask(__name__, template_folder="templates")
 
@@ -83,7 +80,6 @@ class User(db.Model):
 def homepage():
    return render_template('homepage.html')  # render a template
 
-
 @app.route('/welcome', methods=['GET', 'POST'])
 def welcome():
          return render_template('welcome.html')  # render a template
@@ -95,7 +91,6 @@ def makevote():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
          return render_template('register.html')  # render a template
-
 
 # Route for handling the login page logic
 @app.route('/login', methods=['GET', 'POST'])
