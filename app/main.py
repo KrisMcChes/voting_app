@@ -4,7 +4,7 @@ from app import app
 from app.models import User
 
 # to delete database
-db.drop_all() 
+# db.drop_all() 
 db.create_all()
 # to chec 
 print(User.query.all())
@@ -75,3 +75,4 @@ if __name__ == '__main__':
 # Prevent people from just manually writing in the URL
 # Adding fingerprint fields. 
 # Is there a way to build in a file input so that an admin can select the fingerprint file from their computer?
+# How do I set the thing to false to shutoff the warning? In init?
