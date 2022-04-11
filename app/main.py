@@ -60,7 +60,7 @@ def login():
             error = 'Invalid Username. Try again or ask an Admin for help.'
         elif userNameFound.user_password != password:
             error = 'Invalid password. Try again or ask an Admin for help.'
-        elif userNameFound.is_admin == "Yes":
+        elif userNameFound.is_admin == "Y":
             return redirect(url_for('welcome'))
         else: 
             return redirect(url_for('user'))
@@ -73,3 +73,5 @@ if __name__ == '__main__':
 # Things I may want to do:
 # Get the isadmin into a checkbox to work with true/false
 # Prevent people from just manually writing in the URL
+# Adding fingerprint fields. 
+# Is there a way to build in a file input so that an admin can select the fingerprint file from their computer?
