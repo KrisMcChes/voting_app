@@ -36,7 +36,7 @@ def register():
 
         # print(User.query.all())
 
-        return user.username + " <br/> " + password
+        return redirect(url_for('welcome'))
     return render_template('register.html')
 
 # Route for handling the login page logic
