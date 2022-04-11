@@ -4,10 +4,10 @@ from app import app
 from app.models import User
 
 # to delete database
-# db.drop_all() 
+db.drop_all() 
 db.create_all()
 # to chec 
-# print(User.query.all())
+print(User.query.all())
 
 @app.route('/', methods=['GET', 'POST'])
 def homepage():
@@ -21,6 +21,10 @@ def welcome():
 def makevote():
          return render_template('makevote.html')  # render a template
 
+@app.route('/user', methods=['GET', 'POST'])
+def user():
+   return render_template('user.html')  # render a template
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     # check the request method to ensure the handling of POST request only
@@ -28,9 +32,10 @@ def register():
         # store the form value
         user_name = request.form["username"]
         password = request.form["password"]
+        admin = request.form["admin"]
         
         # create an instance of the user table
-        user = User(username = user_name, user_password = password)
+        user = User(username = user_name, user_password = password, is_admin = admin)
         db.session.add(user)
         db.session.commit()
 
@@ -55,9 +60,16 @@ def login():
             error = 'Invalid Username. Try again or ask an Admin for help.'
         elif userNameFound.user_password != password:
             error = 'Invalid password. Try again or ask an Admin for help.'
-        else:
+        elif userNameFound.is_admin == "Yes":
             return redirect(url_for('welcome'))
+        else: 
+            return redirect(url_for('user'))
     return render_template('login.html', error=error)
 # Create another database just for admins or redirect admins to another page
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)
+
+
+# Things I may want to do:
+# Get the isadmin into a checkbox to work with true/false
+# Prevent people from just manually writing in the URL
