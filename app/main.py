@@ -7,7 +7,7 @@ from app.models import User
 # db.drop_all() 
 db.create_all()
 # to chec 
-print(User.query.all())
+# print(User.query.all())
 
 @app.route('/', methods=['GET', 'POST'])
 def homepage():
