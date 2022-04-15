@@ -3,12 +3,19 @@
   <head>
     <title>Voting App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Bootstrap core CSS-->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
   </head>
   <body>
     <div class="container">
-      <h1>Voting App Homepage</h2>
-      <br>
-      <p>Click <a href="/login">here</a> to Log In!</p>
+      <h1>Voting App Homepage</h1>
+    
+      <p><a href="/welcome">Welcome</a></p>
+      <p><a href="/register">Registration</a></p>
+      <p><a href="/login">Login</a></p>
+      <p><a href="/user">User</a></p>
+      <p><a href="/makevote">Make Vote</a></p>
+      <p><a href="/vote">Vote</a></p>
     </div>
   </body>
 </html>

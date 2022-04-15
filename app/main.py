@@ -6,24 +6,28 @@ from app.models import User
 # to delete database
 # db.drop_all() 
 db.create_all()
-# to chec 
+# to check
 # print(User.query.all())
-
+ 
 @app.route('/', methods=['GET', 'POST'])
 def homepage():
    return render_template('homepage.html')  # render a template
 
 @app.route('/welcome', methods=['GET', 'POST'])
 def welcome():
-         return render_template('welcome.html')  # render a template
-
-@app.route('/makevote', methods=['GET', 'POST'])
-def makevote():
-         return render_template('makevote.html')  # render a template
+    return render_template('welcome.html')  # render a template
 
 @app.route('/user', methods=['GET', 'POST'])
 def user():
    return render_template('user.html')  # render a template
+
+@app.route('/makevote', methods=['GET', 'POST'])
+def makevote():
+    return render_template('makevote.html')  # render a template
+
+@app.route('/vote', methods=['GET', 'POST'])
+def vote():
+    return render_template('vote.html')  # render a template
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -65,7 +69,9 @@ def login():
         else: 
             return redirect(url_for('user'))
     return render_template('login.html', error=error)
+
 # Create another database just for admins or redirect admins to another page
+
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)
 

@@ -1,7 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 
 # create a new SQLAlchemy object 
-
 db = SQLAlchemy()
 
 # Base model that for other models to inherit from 
