@@ -2,6 +2,11 @@ from flask import render_template, redirect, url_for, request
 from app import db
 from app import app
 from app.models import User
+import adafruit_fingerprint
+#from app import scanfinger
+
+
+
 
 # to delete database
 # db.drop_all() 
@@ -28,6 +33,13 @@ def makevote():
 @app.route('/vote', methods=['GET', 'POST'])
 def vote():
     return render_template('vote.html')  # render a template
+
+
+@app.route('/scanfinger', methods=['GET', 'POST'])
+def scanfinger():
+    run_scanner()
+    return render_template('scanfinger.html')  # render a template
+
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
