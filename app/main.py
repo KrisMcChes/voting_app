@@ -1,8 +1,11 @@
-from flask import render_template, redirect, url_for, request
+from flask import Flask, render_template, redirect, url_for, request, jsonify
+app = Flask(__name__)
 from app import db
 from app import app
 from app.models import User
+
 """
+# Adafruit Library
 import adafruit_fingerprint
 from app import scanfinger
 """
@@ -37,12 +40,16 @@ def makevote():
 def vote():
     return render_template('vote.html')  # render a template
 
-"""
+
 @app.route('/scanner', methods=['GET', 'POST'])
 def scanner():
-    scanfinger.run_scanner()
     return render_template('scanner.html')  # render a template
-"""
+
+@app.route('/runScanner')
+def runScanner():
+    print('In Run Scanner Function')
+    scanfinger.run_scanner()
+    return
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
