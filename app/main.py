@@ -15,35 +15,59 @@ from app import scanfinger
 db.create_all()
 # to check
 # print(User.query.all())
+is_admin = False;
+is_user = False;
  
 @app.route('/', methods=['GET', 'POST'])
 def homepage():
-   return render_template('homepage.html')  # render a template
+    global is_admin
+    global is_user
+    is_admin = False;
+    is_user = False;
+    return render_template('homepage.html')  # render a template
 
 @app.route('/welcome', methods=['GET', 'POST'])
 def welcome():
-    return render_template('welcome.html')  # render a template
+    if (is_admin == True): 
+        return render_template('welcome.html')  # render a template
+    else:
+        return render_template('error.html')  
 
 @app.route('/user', methods=['GET', 'POST'])
 def user():
-   return render_template('user.html')  # render a template
+    if (is_user == True): 
+        return render_template('user.html')  # render a template
+    else:
+        return render_template('error.html')  # render a template
 
 @app.route('/createpoll', methods=['GET', 'POST'])
 def createpoll():
-   return render_template('createpoll.html')  # render a template
+    if (is_admin == True): 
+           return render_template('createpoll.html')  # render a template
+    else:
+        return render_template('error.html') 
 
 @app.route('/makevote', methods=['GET', 'POST'])
 def makevote():
-    return render_template('makevote.html')  # render a template
+    if (is_admin == True): 
+        return render_template('makevote.html')  # render a template
+    else:
+        return render_template('error.html')  # render a template
 
 @app.route('/vote', methods=['GET', 'POST'])
 def vote():
-    return render_template('vote.html')  # render a template
+    if (is_user == True): 
+        return render_template('vote.html')  # render a template
+    else:
+        return render_template('error.html')  # render a template
 
 
 @app.route('/scanner', methods=['GET', 'POST'])
 def scanner():
-    return render_template('scanner.html')  # render a template
+    if (is_admin == True): 
+        return render_template('scanner.html')  # render a template
+    else:
+        return render_template('error.html')  # render a template
 
 @app.route('/runScanner')
 def runScanner():
@@ -53,22 +77,26 @@ def runScanner():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
-    # check the request method to ensure the handling of POST request only
-    if request.method == "POST":
-        # store the form value
-        user_name = request.form["username"]
-        password = request.form["password"]
-        admin = request.form["admin"]
+    if (is_admin == True): 
+        # check the request method to ensure the handling of POST request only
+        if request.method == "POST":
+            # store the form value
+            user_name = request.form["username"]
+            password = request.form["password"]
+            admin = request.form["admin"]
         
-        # create an instance of the user table
-        user = User(username = user_name, user_password = password, is_admin = admin)
-        db.session.add(user)
-        db.session.commit()
+            # create an instance of the user table
+            user = User(username = user_name, user_password = password, is_admin = admin)
+            db.session.add(user)
+            db.session.commit()
 
-        # print(User.query.all())
+            # print(User.query.all())
 
-        return redirect(url_for('welcome'))
-    return render_template('register.html')
+            return redirect(url_for('welcome'))
+        return render_template('register.html')
+    else:
+        return render_template('error.html')  # render a template
+
 
 # Route for handling the login page logic
 @app.route('/login', methods=['GET', 'POST'])
@@ -87,12 +115,14 @@ def login():
         elif userNameFound.user_password != password:
             error = 'Invalid password. Try again or ask an Admin for help.'
         elif userNameFound.is_admin == "Y":
+            global is_admin
+            is_admin = True;
             return redirect(url_for('welcome'))
         else: 
+            global is_user
+            is_user = True;
             return redirect(url_for('user'))
     return render_template('login.html', error=error)
-
-# Create another database just for admins or redirect admins to another page
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)
@@ -104,3 +134,4 @@ if __name__ == '__main__':
 # Adding fingerprint fields. 
 # Is there a way to build in a file input so that an admin can select the fingerprint file from their computer?
 # How do I set the thing to false to shutoff the warning? In init?
+# Getting vote/polls logic to work with the databse
