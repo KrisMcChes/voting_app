@@ -11,7 +11,7 @@ from app import scanfinger
 """
 
 # to delete database
-db.drop_all() 
+# db.drop_all() 
 db.create_all()
 # to check
 # print(User.query.all())
@@ -110,6 +110,8 @@ def login():
         userNameFound = None
         for user in User.query.all():
             if userName == user.username:
+                Kris_variable = user.fingerprint2
+                print(Kris_variable)
                 userNameFound = user
                 break
         if userNameFound == None:
