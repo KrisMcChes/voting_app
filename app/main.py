@@ -11,7 +11,7 @@ from app import scanfinger
 """
 
 # to delete database
-# db.drop_all() 
+db.drop_all() 
 db.create_all()
 # to check
 # print(User.query.all())
@@ -84,9 +84,11 @@ def register():
             user_name = request.form["username"]
             password = request.form["password"]
             admin = request.form["admin"]
-        
+            fingerprint1 = request.form["fingerprint1"]
+            fingerprint2 = request.form["fingerprint2"]
+
             # create an instance of the user table
-            user = User(username = user_name, user_password = password, is_admin = admin)
+            user = User(username = user_name, user_password = password, is_admin = admin, fingerprint1 = fingerprint1, fingerprint2 = fingerprint2)
             db.session.add(user)
             db.session.commit()
 
@@ -130,9 +132,6 @@ if __name__ == '__main__':
 
 # Things I may want to do:
 # Get the isadmin into a checkbox to work with true/false - Have the checkbox working but I don't know
-# what it ouputs
-# Prevent people from just manually writing in the URL
-# Adding fingerprint fields. 
-# Is there a way to build in a file input so that an admin can select the fingerprint file from their computer?
+# what it ouputs or how to use that (get boolean in database)
 # How do I set the thing to false to shutoff the warning? In init?
 # Getting vote/polls logic to work with the databse
