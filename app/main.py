@@ -129,7 +129,8 @@ if __name__ == '__main__':
 
 
 # Things I may want to do:
-# Get the isadmin into a checkbox to work with true/false
+# Get the isadmin into a checkbox to work with true/false - Have the checkbox working but I don't know
+# what it ouputs
 # Prevent people from just manually writing in the URL
 # Adding fingerprint fields. 
 # Is there a way to build in a file input so that an admin can select the fingerprint file from their computer?
