@@ -9,15 +9,8 @@
   <body>
     <div class="container">
       <h1>Voting App Homepage</h1>
-    
-      <p><a href="/welcome">Welcome</a></p>
-      <p><a href="/register">Registration</a></p>
-      <p><a href="/login">Login</a></p>
-      <p><a href="/user">User</a></p>
-      <p><a href="/makevote">Make Vote</a></p>
-      <p><a href="/vote">Vote</a></p>
-      <p><a href="/scanner">Scan Fingerprint</a></p>
-      <p><a href="/createpoll">Create a Poll</a></p>
+      <button class="btn btn-default" type="button" onclick="window.location.href='{{ url_for('login') }}';">Click Here to Login!</button>
+
     </div>
   </body>
 </html>
