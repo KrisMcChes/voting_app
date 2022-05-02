@@ -71,8 +71,9 @@ def scanner():
 def enrollFinger():
     scanfinger.enroll_finger(scanfinger.get_num())
     print('In enrollFinger')
-    return "Nothing"
     
+    return "Nothing"
+
 """
 @app.route('/runScanner')
 def runScanner():
