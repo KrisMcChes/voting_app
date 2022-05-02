@@ -94,15 +94,15 @@ def register():
             fingerprint1 = request.form["fingerprint1"]
             fingerprint2 = request.form["fingerprint2"]
             """
-            
+
             # create an instance of the user table
-            user = User(username = user_name, user_password = password, is_admin = admin, fingerprint1 = fingerprint1, fingerprint2 = fingerprint2)
+            user = User(username = user_name, user_password = password, is_admin = admin)
             db.session.add(user)
             db.session.commit()
 
             # print(User.query.all())
 
-            return redirect(url_for('welcome'))
+            return redirect(url_for('scanner'))
         return render_template('register.html')
     else:
         return render_template('error.html')  # render a template
