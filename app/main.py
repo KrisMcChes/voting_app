@@ -61,7 +61,7 @@ def vote():
     else:
         return render_template('error.html')  # render a template
 
-
+""" Fingerprint Functions """
 @app.route('/scanner', methods=['GET', 'POST'])
 def scanner():
     if (is_admin == True): 
@@ -69,11 +69,18 @@ def scanner():
     else:
         return render_template('error.html')  # render a template
 
+@app.route('/enrollFinger')
+def enrollFinger():
+    scanfinger.enroll_finger(get_num())
+    print('In enrollFinger')
+    return "Nothing"
+
 @app.route('/runScanner')
 def runScanner():
     print('In Run Scanner Function')
     scanfinger.run_scanner()
     return
+""" **************** """
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
