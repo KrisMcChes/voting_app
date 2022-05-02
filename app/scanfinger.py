@@ -170,6 +170,7 @@ def get_num():
             pass
     return i
 
+"""
 def run_scanner():
     while True:
         print("----------------")
@@ -194,3 +195,4 @@ def run_scanner():
                 print("Deleted!")
             else:
                 print("Failed to delete")
+"""
