@@ -4,9 +4,11 @@ from app import db
 from app import app
 from app.models import User
 
+"""
 # Adafruit Library
 import adafruit_fingerprint
 from app import scanfinger
+"""
 
 # to delete database
 # db.drop_all() 
@@ -71,16 +73,13 @@ def scanner():
 def enrollFinger():
     scanfinger.enroll_finger(scanfinger.get_num())
     print('In enrollFinger')
-    
     return "Nothing"
-
-"""
+    
 @app.route('/runScanner')
 def runScanner():
     print('In Run Scanner Function')
     scanfinger.run_scanner()
     return
-"""
 """ **************** """
 
 @app.route("/register", methods=["GET", "POST"])
