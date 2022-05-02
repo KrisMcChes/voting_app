@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Registration Form</title>
+        <title>Enroll Fingerprints</title>
 
         <!--Bootstrap core CSS-->
         <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
@@ -15,7 +15,7 @@
     </head>
     <body>
         <div class="container">
-            <h1>Registartion</h1>
+            <h1>Enroll Fingerprints</h1>
             <form action="" method="post">
                 <fieldset>
                     <label for="username">Full Name</label>
@@ -58,5 +58,15 @@
         <div class="container">
             <p>Click <a href="/">here</a> to go home.</p>
         </div>
+
+        <fieldset>
+          <label for="fingerprint1">Fingerprint1</label>
+          <input type="fingerprint1" name="fingerprint1" placeholder="Left Pointer Finger">
+      </fieldset>
+      <fieldset>
+          <label for="fingerprint2">Fingerprint2</label>
+          <input type="fingerprint2" name="fingerprint2" placeholder="Right Pointer Finger">
+      </fieldset>
+
     </body>
 </html>
