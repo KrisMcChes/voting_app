@@ -4,11 +4,9 @@ from app import db
 from app import app
 from app.models import User
 
-
 # Adafruit Library
 import adafruit_fingerprint
 from app import scanfinger
-
 
 # to delete database
 # db.drop_all() 
