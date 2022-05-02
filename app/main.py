@@ -72,6 +72,7 @@ def enrollFinger():
     scanfinger.enroll_finger(scanfinger.get_num())
     print('In enrollFinger')
     return "Nothing"
+    
 """
 @app.route('/runScanner')
 def runScanner():
@@ -92,7 +93,7 @@ def register():
             admin = request.form["admin"]
             fingerprint1 = 0
             fingerprint2 = 0
-            
+
             # create an instance of the user table
             user = User(username = user_name, user_password = password, is_admin = admin, fingerprint1 = fingerprint1, fingerprint2 = fingerprint2)
             db.session.add(user)
